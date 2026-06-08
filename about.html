@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Karina</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='black'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='white' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Pinyon+Script&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 1.75rem 3rem;
+      gap: 2.5rem;
+      background: rgba(0, 0, 0, 0.72);
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+
+    nav a:hover { opacity: 1; }
+    nav a.active { opacity: 1; border-bottom: 1px solid var(--white); padding-bottom: 2px; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 9rem 2rem 4rem;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-family: 'Vidaloka', serif;
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+
+    .page-header p {
+      font-family: 'Pinyon Script', cursive;
+      font-style: italic;
+      font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+      opacity: 0.85;
+      margin-top: 0.5rem;
+    }
+
+    /* ── BIO SECTION ── */
+    .bio {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      max-width: 1000px;
+      margin: 0 auto 7rem;
+      padding: 0 2rem;
+    }
+
+    /* headshot */
+    .bio-photo {
+      flex: 0 0 280px;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      overflow: hidden;
+      /* PLACEHOLDER: replace with real headshot */
+      background: #1a1a1a;
+    }
+
+    .bio-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(100%);
+    }
+
+    /* bio text */
+    .bio-text {
+      flex: 1;
+      padding-top: 0.5rem;
+    }
+
+    .bio-text h2 {
+      font-family: 'Vidaloka', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      margin-bottom: 1.5rem;
+    }
+
+    .bio-text p {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 1.9;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 1.2rem;
+    }
+
+    .bio-text p:last-child { margin-bottom: 0; }
+
+    /* ── TESTIMONIAL ── */
+    .testimonial {
+      max-width: 780px;
+      margin: 0 auto 8rem;
+      padding: 0 2rem;
+      text-align: center;
+    }
+
+    .testimonial-divider {
+      width: 40px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.2);
+      margin: 0 auto 3.5rem;
+    }
+
+    .testimonial blockquote {
+      font-family: 'Pinyon Script', cursive;
+      font-style: italic;
+      font-size: clamp(2rem, 5.5vw, 3.4rem);
+      line-height: 1.45;
+      color: var(--white);
+      opacity: 0.92;
+    }
+
+    .testimonial cite {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 2rem;
+    }
+
+    /* ── FADE-IN ANIMATIONS ── */
+    @keyframes fade-in-up {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in-load {
+      opacity: 0;
+      animation: fade-in-up 1.1s ease forwards;
+    }
+
+    .fade-in-scroll {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+
+    .fade-in-scroll.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── SCROLL TO TOP ── */
+    .scroll-top {
+      position: fixed;
+      bottom: 1.75rem;
+      right: 1.75rem;
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 50%;
+      background: var(--white);
+      color: var(--black);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease;
+      z-index: 200;
+    }
+
+    .scroll-top.visible {
+      opacity: 0.9;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .scroll-top:hover {
+      opacity: 1;
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .scroll-top svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 1.25rem 1.5rem;
+        gap: 1.5rem;
+      }
+
+      .bio {
+        flex-direction: column;
+        align-items: center;
+        gap: 2.5rem;
+        margin-bottom: 5rem;
+      }
+
+      .bio-photo {
+        flex: none;
+        width: 220px;
+        height: 220px;
+      }
+
+      .bio-text { padding-top: 0; }
+
+      .bio { margin-top: 1.5rem; }
+
+      .page-header { padding-top: 7rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="about.html" class="active">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header fade-in-load">
+    <h1>About</h1>
+    <p>The person behind the lens</p>
+  </header>
+
+  <!-- BIO -->
+  <section class="bio fade-in-scroll">
+
+    <!-- PLACEHOLDER: replace src with Karina's real headshot -->
+    <div class="bio-photo">
+      <img src="https://picsum.photos/seed/karina/560/560" alt="Portrait of Karina" />
+    </div>
+
+    <div class="bio-text">
+      <!-- PLACEHOLDER: replace name, location, and bio paragraphs -->
+      <h2>Hi, I'm Karina.</h2>
+      <p>
+        I'm a wedding photographer based in [City], drawn to the quiet, unguarded
+        moments that happen between the planned ones — a hand squeeze before the
+        ceremony, laughter that catches someone off guard, the stillness just after
+        the first dance ends.
+      </p>
+      <p>
+        My approach is documentary at heart and romantic by nature. I stay close
+        enough to feel everything, and far enough back to let it happen naturally.
+        The result is a collection of images that feel less like photographs and
+        more like memories you can hold.
+      </p>
+      <p>
+        When I'm not shooting, you'll find me [personal detail — e.g. hiking with
+        my dog, haunting used bookshops, or drinking too much espresso]. I'd love
+        to hear about your day.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="testimonial fade-in-scroll">
+    <div class="testimonial-divider"></div>
+    <!-- PLACEHOLDER: replace quote and attribution with a real client testimonial -->
+    <blockquote>
+      "She disappeared into the background and somehow caught every single moment
+      we didn't even know was happening. Our photos are everything."
+    </blockquote>
+    <cite>— [Client Name] &amp; [Partner Name], [Wedding Venue], [Year]</cite>
+  </section>
+
+  <!-- SCROLL TO TOP -->
+  <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <line x1="12" y1="19" x2="12" y2="5"/>
+      <polyline points="5 12 12 5 19 12"/>
+    </svg>
+  </button>
+
+  <script>
+    const fadeEls = document.querySelectorAll('.fade-in-scroll');
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    fadeEls.forEach((el) => fadeObserver.observe(el));
+
+    const scrollTopBtn = document.getElementById('scroll-top');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>

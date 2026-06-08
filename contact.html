@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Karina</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='black'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='white' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Pinyon+Script&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #000000;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 1.75rem 3rem;
+      gap: 2.5rem;
+      background: rgba(0, 0, 0, 0.72);
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+
+    nav a:hover { opacity: 1; }
+    nav a.active { opacity: 1; border-bottom: 1px solid var(--white); padding-bottom: 2px; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 9rem 2rem 4rem;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-family: 'Vidaloka', serif;
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+
+    .page-header p {
+      font-family: 'Pinyon Script', cursive;
+      font-style: italic;
+      font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+      opacity: 0.85;
+      margin-top: 0.5rem;
+    }
+
+    /* ── FORM WRAPPER ── */
+    .contact-wrap {
+      max-width: 560px;
+      margin: 0 auto 7rem;
+      padding: 0 2rem;
+    }
+
+    /* ── FORM FIELDS ── */
+    .field {
+      position: relative;
+      margin-bottom: 3rem;
+    }
+
+    .field label {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 0.65rem;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 1rem;
+      padding: 0.5rem 0 0.75rem;
+      outline: none;
+      caret-color: var(--white);
+      transition: border-color 0.25s;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-bottom-color: var(--white);
+    }
+
+    .field textarea {
+      resize: none;
+      height: 130px;
+      display: block;
+    }
+
+    /* ── SUBMIT ── */
+    .submit-wrap {
+      margin-top: 3.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+
+    .btn-submit {
+      background: var(--white);
+      color: var(--black);
+      border: 1px solid var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.85rem 2.4rem;
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    .btn-submit:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    /* ── CONFIRMATION MESSAGE ── */
+    .confirm-msg {
+      display: none;
+      font-family: 'Pinyon Script', cursive;
+      font-style: italic;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      color: var(--white);
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+
+    .confirm-msg.visible {
+      display: block;
+      opacity: 1;
+    }
+
+    .form-msg {
+      display: none;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 0.85rem;
+      letter-spacing: 0.03em;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .form-msg.visible {
+      display: block;
+    }
+
+    /* ── INSTAGRAM LINK ── */
+    .social {
+      margin-top: 5rem;
+      text-align: center;
+    }
+
+    .social a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      color: rgba(255, 255, 255, 0.55);
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .social a:hover { color: var(--white); }
+
+    /* SVG Instagram icon */
+    .social svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    /* ── FADE-IN ANIMATIONS ── */
+    @keyframes fade-in-up {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in-load {
+      opacity: 0;
+      animation: fade-in-up 1.1s ease forwards;
+    }
+
+    .fade-in-scroll {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+
+    .fade-in-scroll.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── SCROLL TO TOP ── */
+    .scroll-top {
+      position: fixed;
+      bottom: 1.75rem;
+      right: 1.75rem;
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 50%;
+      background: var(--white);
+      color: var(--black);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease;
+      z-index: 200;
+    }
+
+    .scroll-top.visible {
+      opacity: 0.9;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .scroll-top:hover {
+      opacity: 1;
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .scroll-top svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 1.25rem 1.5rem;
+        gap: 1.5rem;
+      }
+
+      .page-header { padding-top: 7rem; }
+
+      .submit-wrap { align-items: stretch; }
+      .btn-submit { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="active">Contact</a>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header fade-in-load">
+    <h1>Contact</h1>
+    <p>Let's talk about your day</p>
+  </header>
+
+  <!-- FORM -->
+  <div class="contact-wrap fade-in-scroll">
+    <form id="contact-form" novalidate>
+
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" />
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email" />
+      </div>
+
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Tell me about your wedding — date, venue, what you're dreaming of…"></textarea>
+      </div>
+
+      <div class="submit-wrap">
+        <button type="submit" class="btn-submit">Send message</button>
+        <p class="form-msg" id="form-msg">Please fill in all fields before sending.</p>
+        <p class="confirm-msg" id="confirm-msg">Thank you. I'll be in touch soon.</p>
+      </div>
+
+    </form>
+
+    <!-- PLACEHOLDER: replace href with Karina's real Instagram URL -->
+    <div class="social">
+      <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+        <!-- Instagram SVG (Feather-style outline icon) -->
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+        </svg>
+        Instagram
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const form    = document.getElementById('contact-form');
+    const confirm = document.getElementById('confirm-msg');
+    const formMsg = document.getElementById('form-msg');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name    = form.name.value.trim();
+      const email   = form.email.value.trim();
+      const message = form.message.value.trim();
+
+      if (!name || !email || !message) {
+        formMsg.classList.add('visible');
+        confirm.classList.remove('visible');
+        return;
+      }
+
+      formMsg.classList.remove('visible');
+      form.querySelector('.btn-submit').style.display = 'none';
+      confirm.classList.add('visible');
+    });
+  </script>
+
+  <!-- SCROLL TO TOP -->
+  <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <line x1="12" y1="19" x2="12" y2="5"/>
+      <polyline points="5 12 12 5 19 12"/>
+    </svg>
+  </button>
+
+  <script>
+    const fadeEls = document.querySelectorAll('.fade-in-scroll');
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    fadeEls.forEach((el) => fadeObserver.observe(el));
+
+    const scrollTopBtn = document.getElementById('scroll-top');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>
