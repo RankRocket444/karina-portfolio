@@ -303,11 +303,13 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
-      nav {
-        justify-content: center;
-        flex-wrap: wrap;
+      body > nav {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+        align-items: center;
         padding: 1.25rem 1.5rem;
-        gap: 1.5rem;
+        gap: 1rem 1.5rem;
       }
 
       .page-header { padding-top: 7rem; }
