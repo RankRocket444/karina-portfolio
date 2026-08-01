@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gallery — Karina</title>
+  <meta name="description" content="Explore a fictional wedding photography gallery featuring Garden of the Gods, Pikes Peak, mountain ceremonies, portraits, and reception details." />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='black'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='white' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,7 +26,7 @@
     }
 
     /* ── NAV ── */
-    nav {
+    body > nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
@@ -93,12 +94,11 @@
     .masonry-item img {
       width: 100%;
       display: block;
-      filter: grayscale(100%);
       transition: filter 0.35s, transform 0.4s;
     }
 
     .masonry-item:hover img {
-      filter: grayscale(100%) brightness(1.1);
+      filter: brightness(1.1);
       transform: scale(1.03);
     }
 
@@ -141,7 +141,6 @@
       max-height: 88vh;
       object-fit: contain;
       display: block;
-      filter: grayscale(100%);
       opacity: 0;
       transform: scale(0.96);
       transition: opacity 0.3s 0.1s, transform 0.3s 0.1s;
@@ -274,6 +273,7 @@
       .page-header { padding-top: 7rem; }
     }
   </style>
+  <link rel="stylesheet" href="site-enhancements.css" />
 </head>
 <body>
 
@@ -292,43 +292,24 @@
   </header>
 
   <!-- MASONRY GRID -->
-  <!-- PLACEHOLDER: replace picsum.photos src values with real photos -->
   <section class="masonry fade-in-scroll" id="gallery">
     <div class="masonry-item" data-index="0">
-      <img src="https://picsum.photos/seed/w1/600/800"  alt="Wedding photo 1"  loading="lazy" />
+      <img src="assets/images/wedding-01.jpg" alt="Wedding photography portfolio sample, image 1" loading="lazy" />
     </div>
     <div class="masonry-item" data-index="1">
-      <img src="https://picsum.photos/seed/w2/600/500"  alt="Wedding photo 2"  loading="lazy" />
+      <img src="assets/images/wedding-02.jpg" alt="Wedding photography portfolio sample, image 2" loading="lazy" />
     </div>
     <div class="masonry-item" data-index="2">
-      <img src="https://picsum.photos/seed/w3/600/750"  alt="Wedding photo 3"  loading="lazy" />
+      <img src="assets/images/wedding-03.jpg" alt="Wedding photography portfolio sample, image 3" loading="lazy" />
     </div>
     <div class="masonry-item" data-index="3">
-      <img src="https://picsum.photos/seed/w4/600/900"  alt="Wedding photo 4"  loading="lazy" />
+      <img src="assets/images/wedding-04.jpg" alt="Wedding photography portfolio sample, image 4" loading="lazy" />
     </div>
     <div class="masonry-item" data-index="4">
-      <img src="https://picsum.photos/seed/w5/600/600"  alt="Wedding photo 5"  loading="lazy" />
+      <img src="assets/images/wedding-05.jpg" alt="Wedding photography portfolio sample, image 5" loading="lazy" />
     </div>
     <div class="masonry-item" data-index="5">
-      <img src="https://picsum.photos/seed/w6/600/820"  alt="Wedding photo 6"  loading="lazy" />
-    </div>
-    <div class="masonry-item" data-index="6">
-      <img src="https://picsum.photos/seed/w7/600/700"  alt="Wedding photo 7"  loading="lazy" />
-    </div>
-    <div class="masonry-item" data-index="7">
-      <img src="https://picsum.photos/seed/w8/600/550"  alt="Wedding photo 8"  loading="lazy" />
-    </div>
-    <div class="masonry-item" data-index="8">
-      <img src="https://picsum.photos/seed/w9/600/860"  alt="Wedding photo 9"  loading="lazy" />
-    </div>
-    <div class="masonry-item" data-index="9">
-      <img src="https://picsum.photos/seed/w10/600/680" alt="Wedding photo 10" loading="lazy" />
-    </div>
-    <div class="masonry-item" data-index="10">
-      <img src="https://picsum.photos/seed/w11/600/760" alt="Wedding photo 11" loading="lazy" />
-    </div>
-    <div class="masonry-item" data-index="11">
-      <img src="https://picsum.photos/seed/w12/600/500" alt="Wedding photo 12" loading="lazy" />
+      <img src="assets/images/wedding-06.jpg" alt="Wedding photography portfolio sample, image 6" loading="lazy" />
     </div>
   </section>
 
@@ -407,6 +388,16 @@
       <polyline points="5 12 12 5 19 12"/>
     </svg>
   </button>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p class="footer-brand">Karina Photography</p>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="index.html">Home</a> | <a href="gallery.html">Gallery</a> | <a href="about.html">About</a> | <a href="contact.html">Contact</a>
+    </nav>
+    <p class="footer-tagline">Wedding photography in Colorado Springs</p>
+    <p class="footer-copyright">&copy; 2026 Karina Photography. All rights reserved.</p>
+  </footer>
 
   <script>
     const fadeEls = document.querySelectorAll('.fade-in-scroll');

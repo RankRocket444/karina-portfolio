@@ -1,0 +1,84 @@
+/* Shared production-readiness styles.
+   Scope: footer, visible keyboard focus, reduced motion.
+   Does not move or replace the per-page inline styles. */
+
+/* ── FOOTER ── */
+.site-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 3rem 2rem 2.5rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+}
+
+.site-footer .footer-brand {
+  font-family: 'Vidaloka', serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.site-footer .footer-nav {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.site-footer .footer-nav a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.site-footer .footer-nav a:hover {
+  color: #ffffff;
+}
+
+.site-footer .footer-tagline {
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.site-footer .footer-copyright {
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ── VISIBLE KEYBOARD FOCUS ── */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* contact form fields set outline:none inline; restore it on keyboard focus */
+.field input:focus-visible,
+.field textarea:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+}
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .fade-in-load,
+  .fade-in-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Karina</title>
+  <meta name="description" content="Fictional Colorado Springs wedding photography portfolio featuring mountain celebrations, natural portraits, and an elegant responsive design." />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='black'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='white' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,7 +26,7 @@
     }
 
     /* ── NAV ── */
-    nav {
+    body > nav {
       position: absolute;
       top: 0; left: 0; right: 0;
       z-index: 10;
@@ -55,8 +56,8 @@
     .hero {
       position: relative;
       width: 100%;
-      height: 78vh;
-      min-height: 500px;
+      height: 70vh;
+      min-height: 420px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -64,10 +65,10 @@
       text-align: center;
       overflow: hidden;
 
-      /* placeholder background – replace with a real image URL */
-      background-image: url('https://via.placeholder.com/1920x1080/222222/555555?text=Hero+Photo');
+      background-image: url('assets/images/karina-hero.png');
       background-size: cover;
       background-position: center;
+      background-repeat: no-repeat;
     }
 
     /* dark overlay */
@@ -75,7 +76,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.65);
+      background: rgba(0, 0, 0, 0.38);
     }
 
     .hero-content {
@@ -134,10 +135,41 @@
       border-color: var(--white);
     }
 
+    /* ── HERO FLOURISH ── */
+    .hero-flourish {
+      position: absolute;
+      left: 50%;
+      bottom: 1.75rem;
+      transform: translateX(-50%);
+      z-index: 1;
+      width: 140px;
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255, 255, 255, 0.5) 15%,
+        rgba(212, 175, 140, 0.65) 50%,
+        rgba(255, 255, 255, 0.5) 85%,
+        transparent
+      );
+    }
+
+    .hero-flourish::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 7px;
+      height: 7px;
+      transform: translate(-50%, -50%) rotate(45deg);
+      border: 1px solid rgba(212, 175, 140, 0.85);
+      background: rgba(0, 0, 0, 0.2);
+    }
+
     /* ── INTRO ── */
     .intro {
       max-width: 640px;
-      margin: 5rem auto;
+      margin: 2.75rem auto 3.5rem;
       padding: 0 2rem;
       text-align: center;
     }
@@ -170,12 +202,11 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      filter: grayscale(100%);
       transition: filter 0.3s, transform 0.4s;
     }
 
     .thumb img:hover {
-      filter: grayscale(100%) brightness(1.08);
+      filter: brightness(1.08);
       transform: scale(1.03);
     }
 
@@ -258,9 +289,10 @@
         max-width: 400px;
       }
 
-      .intro { margin: 3.5rem auto; }
+      .intro { margin: 2.75rem auto 3.5rem; }
     }
   </style>
+  <link rel="stylesheet" href="site-enhancements.css" />
 </head>
 <body>
 
@@ -282,6 +314,7 @@
         <a href="contact.html">Inquire Now</a>
       </div>
     </div>
+    <div class="hero-flourish" aria-hidden="true"></div>
   </section>
 
   <!-- INTRO -->
@@ -297,15 +330,14 @@
 
   <!-- GALLERY PREVIEW -->
   <section class="gallery-preview fade-in-scroll">
-    <!-- PLACEHOLDER: replace src values with real photo paths or URLs -->
     <div class="thumb">
-      <img src="https://picsum.photos/seed/kp1/600/800" alt="Wedding preview 1" />
+      <img src="assets/images/wedding-01.jpg" alt="Wedding photography portfolio sample, image 1" />
     </div>
     <div class="thumb">
-      <img src="https://picsum.photos/seed/kp2/600/800" alt="Wedding preview 2" />
+      <img src="assets/images/wedding-03.jpg" alt="Wedding photography portfolio sample, image 3" />
     </div>
     <div class="thumb">
-      <img src="https://picsum.photos/seed/kp3/600/800" alt="Wedding preview 3" />
+      <img src="assets/images/wedding-06.jpg" alt="Wedding photography portfolio sample, image 6" />
     </div>
   </section>
 
@@ -316,6 +348,16 @@
       <polyline points="5 12 12 5 19 12"/>
     </svg>
   </button>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p class="footer-brand">Karina Photography</p>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="index.html">Home</a> | <a href="gallery.html">Gallery</a> | <a href="about.html">About</a> | <a href="contact.html">Contact</a>
+    </nav>
+    <p class="footer-tagline">Wedding photography in Colorado Springs</p>
+    <p class="footer-copyright">&copy; 2026 Karina Photography. All rights reserved.</p>
+  </footer>
 
   <script>
     const fadeEls = document.querySelectorAll('.fade-in-scroll');

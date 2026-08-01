@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About — Karina</title>
+  <meta name="description" content="Meet Karina, the fictional photographer behind this Colorado Springs wedding photography portfolio demonstration." />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='black'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='white' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,7 +26,7 @@
     }
 
     /* ── NAV ── */
-    nav {
+    body > nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
@@ -100,7 +101,6 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      filter: grayscale(100%);
     }
 
     /* bio text */
@@ -127,6 +127,21 @@
     }
 
     .bio-text p:last-child { margin-bottom: 0; }
+
+    .bio-text .fictional-notice {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 0.75rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.45);
+      margin-top: 1.75rem;
+      margin-bottom: 0;
+    }
+
+    .fictional-notice strong {
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 400;
+    }
 
     /* ── TESTIMONIAL ── */
     .testimonial {
@@ -258,6 +273,7 @@
       .page-header { padding-top: 7rem; }
     }
   </style>
+  <link rel="stylesheet" href="site-enhancements.css" />
 </head>
 <body>
 
@@ -278,9 +294,8 @@
   <!-- BIO -->
   <section class="bio fade-in-scroll">
 
-    <!-- PLACEHOLDER: replace src with Karina's real headshot -->
     <div class="bio-photo">
-      <img src="https://picsum.photos/seed/karina/560/560" alt="Portrait of Karina" />
+      <img src="assets/images/karina-portrait.jpg.png" alt="Portrait of Karina" />
     </div>
 
     <div class="bio-text">
@@ -302,6 +317,7 @@
         When I'm not shooting, you'll find me hiking quiet trails, collecting old film cameras, or finding the best espresso in town. I'd love
         to hear about your day.
       </p>
+      <p class="fictional-notice"><strong>Notice:</strong> Karina is a fictional character created for this website demonstration. The portrait and biography do not represent a real person. Any resemblance to an actual person, living or deceased, is purely coincidental.</p>
     </div>
 
   </section>
@@ -324,6 +340,16 @@
       <polyline points="5 12 12 5 19 12"/>
     </svg>
   </button>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p class="footer-brand">Karina Photography</p>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="index.html">Home</a> | <a href="gallery.html">Gallery</a> | <a href="about.html">About</a> | <a href="contact.html">Contact</a>
+    </nav>
+    <p class="footer-tagline">Wedding photography in Colorado Springs</p>
+    <p class="footer-copyright">&copy; 2026 Karina Photography. All rights reserved.</p>
+  </footer>
 
   <script>
     const fadeEls = document.querySelectorAll('.fade-in-scroll');
